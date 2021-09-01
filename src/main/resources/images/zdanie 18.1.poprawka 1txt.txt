@@ -1,0 +1,49 @@
+
+
+Zadanie 18.1
+Zaproponuj przyk³adowy obiekt zapisany w jêzyku JSON, który bêdzie zawiera³ nastêpuj¹ce pola:
+
+nazwê samochodu,
+markê samochodu,
+tablicê zawieraj¹c¹ opis czterech foteli, ka¿dy z foteli bêdzie opisany przez informacje:
+materia³,
+kolor,
+pojemnoœæ silnika.
+
+
+
+{
+"DreamCar" : [
+{
+"name": "Astra",
+"brandCar": "Opel",
+},
+     "equipment": 
+       { " SeatsOne" :{
+       "Materia³":[ "Skin"],
+          "color": ["Red"],
+  }
+ }, {
+     "SeatTwo" : { 
+        Materia³":[ "Skin"],
+          "color": ["Blue"],
+}
+ }, {
+"SeatTree":{ 
+       Materia³":[ "Skin"],
+         "color": ["Black"],
+}
+ },{
+ "SeatFour" : {
+      Materia³":[ "Skin"],
+         "color": ["Yellow"],
+}
+} ]
+}
+
+["Skin", "Black"],
+"fotel4": ["Skin", "Yellow"],
+
+
+"EngineCapsity": 1.8,
+}
