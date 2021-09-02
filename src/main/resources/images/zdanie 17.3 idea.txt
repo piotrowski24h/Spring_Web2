@@ -1,4 +1,20 @@
 
+Invoice item1 	product1
+	item2 	product2
+	item3
+
+
+Invoice item1 
+	item2 
+	item3 
+
+
+1:1
+1:N
+N:1
+N:M
+
+
 
 Zadanie 18.1
 Zaproponuj przyk³adowy obiekt zapisany w jêzyku JSON, który bêdzie zawiera³ nastêpuj¹ce pola:

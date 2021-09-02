@@ -1,0 +1,41 @@
+
+
+
+Zadanie 18.1
+Zaproponuj przyk³adowy obiekt zapisany w jêzyku JSON, który bêdzie zawiera³ nastêpuj¹ce pola:
+
+nazwê samochodu,
+markê samochodu,
+tablicê zawieraj¹c¹ opis czterech foteli, ka¿dy z foteli bêdzie opisany przez informacje:
+materia³,
+kolor,
+pojemnoœæ silnika.
+
+
+{
+    "name": "Astra",
+    "brandCar": "Opel",
+    "EngineCapacity": 1.8,
+    "seats": [
+        {
+            "material": "Skin"
+            "color": "Red"
+        },
+        {
+            "material": "Skin"
+            "color": "Blue"
+        },
+        {
+            "material": "Skin"
+            "color": "Black"
+        },
+        {
+            "material": "Skin"
+            "color": "Yellow"
+        }
+    ]
+}
+
+
+P.S. tym razem skorzysta³em z edytora z Postmana (Body/raw / json)
+
