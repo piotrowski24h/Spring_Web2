@@ -1,59 +1,38 @@
 package com.crud.tasks.controller;
 
 
+import com.crud.tasks.domain.Task;
 import com.crud.tasks.domain.TaskDto;
-import org.springframework.web.bind.annotation.*;
+import com.crud.tasks.mapper.TaskMapper;
+import com.crud.tasks.service.DbService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
-@RequestMapping(path = "/v1")
+@RequestMapping(path = "/v1/task")
+@RequiredArgsConstructor
 public class TaskController {
-    private List<TaskDto> tasks = new ArrayList<>();
 
-    public TaskController() {
-        init();
-    }
+    private final DbService service;
+    private final TaskMapper taskMapper;
 
-    private void init() {
-        this.tasks.add(new TaskDto(1L, "First task", "content1"));
-        this.tasks.add(new TaskDto(2L, "Second task", "content2"));
-        this.tasks.add(new TaskDto(3L, "Third task", "content3"));
-    }
-
-    @GetMapping(path = "/tasks")
+    @RequestMapping(method = RequestMethod.GET, value = "getTasks")
     public List<TaskDto> getTasks() {
-        return tasks;
+        List<Task> tasks = service.getAllTasks();
+        return taskMapper.mapToTaskDtoList(tasks);
     }
 
-    @GetMapping(path = "/tasks/{taskId}")
-    public TaskDto getTask(@PathVariable(name = "taskId") Long taskId) {
-        return tasks.stream()
-                .filter(t -> t.getId().equals(taskId))
-                .findAny().get();
+    @RequestMapping(method = RequestMethod.GET, value = "getTask/{taskId}")//
+    public TaskDto getTask(@PathVariable Long taskId) {
+        Optional<Task> taskOptional = service.getTask(taskId);
+        Task task = taskOptional.get();
+        return taskMapper.mapToTaskDto(task);
     }
 
-    @DeleteMapping(path = "/tasks/{taskId}")
-    public void deleteTask(@PathVariable(name = "taskId") Long taskId) {
-        tasks.removeIf(t -> t.getId().equals(taskId));
-    }
-
-    @PutMapping(path = "/tasks")
-    public TaskDto updateTask(@RequestBody TaskDto taskDto) {
-
-        for (TaskDto task : tasks) {
-            if (task.getId().equals(taskDto.getId())) {
-                task.setTitle(taskDto.getTitle());
-                task.setContent(taskDto.getContent());
-            }
-        }
-
-        return taskDto;
-    }
-
-    @PostMapping(path = "/tasks")
-    public void createTask(TaskDto taskDto) {
-
-    }
 }
