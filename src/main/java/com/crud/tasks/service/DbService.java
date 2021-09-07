@@ -30,4 +30,7 @@ public class DbService {
     }
 
 
+    public void deleteTask(Long taskID) {
+        repository.deleteById(taskID);
+    }
 }
